@@ -28,4 +28,6 @@ Then, either visually select a block of text to focus on and press `gt` or press
 
 The block of text you have selected will be copied to a scratch buffer where those lines are all you see, allowing you to focus on that smaller chunk of text.
 
-When you are done editing in this new buffer, hit `:w` to exit the tunnel. This will copy your newly edited text back to the original buffer that you came from and destroy the scratch buffer. It's as simple as that.
+When you are done editing in this new buffer, hit `:w` to exit the tunnel. This will copy your newly edited text back to the original buffer that you came from and destroy the scratch buffer. Note that this does not save the original buffer.
+
+It's as simple as that.
