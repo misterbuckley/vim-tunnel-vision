@@ -3,15 +3,15 @@ if exists('g:loaded_tunnel_vision')
 endif
 let g:loaded_tunnel_vision = 1
 
-function! tunnel_vision#EnterTunnel(type)
-  if a:type == 1
+function! s:tunnel_vision_enter(type, ...)
+  if a:0 " visual mode
     let l:start = line("'<")
     let l:end = line("'>")
 
   else
     let l:start = line("'[")
     let l:end = line("']")
-  end
+  endif
 
   let l:ft = &ft
 
@@ -32,10 +32,10 @@ function! tunnel_vision#EnterTunnel(type)
   exec "setl ft=" . l:ft
   setl hidden bh=delete
 
-  autocmd BufWriteCmd <buffer> :call tunnel_vision#ExitTunnel()
+  autocmd BufWriteCmd <buffer> :call s:tunnel_vision_exit()
 endfunction
 
-function! tunnel_vision#ExitTunnel()
+function! s:tunnel_vision_exit()
   let l:new_lines = getline(1, '$')
   let l:cursor_pos = getpos('.')
 
@@ -52,5 +52,5 @@ function! tunnel_vision#ExitTunnel()
   call cursor(l:cursor_pos[1] + l:start - 1, l:cursor_pos[2])
 endfunction
 
-command! -nargs=? EnterTunnel :call tunnel_vision#EnterTunnel(<f-args>)
-command! -nargs=? ExitTunnel :call tunnel_vision#ExitTunnel(<f-args>)
+vnoremap <silent> <Plug>(EnterTunnel) :<C-U>call <SID>tunnel_vision_enter(visualmode(), 1)<Enter>
+nnoremap <silent> <Plug>(EnterTunnel) :set opfunc=<SID>tunnel_vision_enter<Enter>g@
