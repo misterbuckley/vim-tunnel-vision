@@ -20,10 +20,11 @@ For example, if you use [Vim-Plug](https://github.com/junegunn/vim-plug), simply
 ## Usage
 
 Put the following mappings in your .vimrc:
+
     nmap gt <Plug>(EnterTunnel)
     vmap gt <Plug>(EnterTunnel)
 
-Then, either visually select a block of text to focus on, or press gt in normal mode followed by a motion to focus on that block of text.
+Then, either visually select a block of text to focus on and press `gt` or press `gt` in normal mode followed by a motion to focus on that block of text.
 
 The block of text you have selected will be copied to a scratch buffer where those lines are all you see, allowing you to focus on that smaller chunk of text.
 
