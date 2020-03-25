@@ -31,3 +31,9 @@ The block of text you have selected will be copied to a scratch buffer where tho
 When you are done editing in this new buffer, hit `:w` to exit the tunnel. This will copy your newly edited text back to the original buffer that you came from and destroy the scratch buffer. Note that this does not save the original buffer.
 
 It's as simple as that.
+
+## Settings
+
+|g:tv_write_immediately|                                *g:tv_write_immediately*
+
+Normally when exiting the tunnel with `:w`, your new changes will not immediately be saved in the original buffer. If |g:tv_write_immediately| is set to a number greater than zero, your changes will immediately be saved in the original buffer (as if you did another `:w`).

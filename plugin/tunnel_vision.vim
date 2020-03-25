@@ -49,6 +49,10 @@ function! s:tunnel_vision_exit()
   exec l:start . "," . l:end . "d"
   call append(l:start - 1, l:new_lines)
 
+  if exists('g:tv_write_immediately') && g:tv_write_immediately > 0
+    write
+  endif
+
   call cursor(l:cursor_pos[1] + l:start - 1, l:cursor_pos[2])
 endfunction
 
